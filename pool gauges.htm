@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>8 Lacewing Drive Mount Sheridan</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 20px 0 10px;
+      font-size: 28px;
+      font-weight: 700;
+      color: #2c3e50;
+    }
+
+    input[type="file"] {
+      font-size: 16px;
+      margin-top: 20px;
+      margin-bottom: 32px;
+      padding: 6px 12px;
+    }
+
+    .gauge-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      padding: 8px 16px 16px;
+    }
+
+    .gauge-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 10px 0;
+      box-shadow: 0 0 6px rgba(0,0,0,0.05);
+    }
+
+    .gauge-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #444;
+    }
+  </style>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['gauge'] });
+
+    const gaugeConfig = [
+      { id: 'chart1_div', title: 'Total Chlorine', options: { max: 12, greenFrom: 2, greenTo: 4, majorTicks: ['0','2','4','6','8','10','12'] }},
+      { id: 'chart2_div', title: 'Free Chlorine', options: { max: 12, greenFrom: 2, greenTo: 4, majorTicks: ['0','2','4','6','8','10','12'] }},
+      { id: 'chart3_div', title: 'Combined Chlorine', options: { max: 0.5, greenFrom: 0, greenTo: 0.2, majorTicks: ['0','0.1','0.2','0.3','0.4','0.5'] }},
+      { id: 'chart4_div', title: 'pH Level', options: { min: 6, max: 9, greenFrom: 7.2, greenTo: 7.6, majorTicks: ['6','6.5','7','7.5','8','8.5','9'] }},
+      { id: 'chart5_div', title: 'Total Alkalinity (adj)', options: { min: 60, max: 140, greenFrom: 80, greenTo: 120, majorTicks: ['60','80','100','120','140'] }},
+      { id: 'chart6_div', title: 'Cyanuric Acid', options: { min: 0, max: 140, greenFrom: 30, greenTo: 100, majorTicks: ['0','30','60','90','120','140'] }},
+      { id: 'chart7_div', title: 'Total Hardness', options: { min: 0, max: 500, greenFrom: 200, greenTo: 400, majorTicks: ['0','100','200','300','400','500'] }},
+      { id: 'chart8_div', title: 'Calcium Hardness', options: { min: 0, max: 500, greenFrom: 200, greenTo: 400, majorTicks: ['0','100','200','300','400','500'] }},
+      { id: 'chart9_div', title: 'Phosphates', options: { min: 0, max: 0.5, greenFrom: 0, greenTo: 0.2, majorTicks: ['0','0.1','0.2','0.3','0.4','0.5'] }},
+      { id: 'chart10_div', title: 'Total Copper', options: { min: 0, max: 0.5, greenFrom: 0, greenTo: 0.3, majorTicks: ['0','0.1','0.2','0.3','0.4','0.5'] }}
+    ];
+
+    function drawGauges(values) {
+      gaugeConfig.forEach((item, i) => {
+        const data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['', parseFloat(values[i])]
+        ]);
+
+        const options = Object.assign({
+          width: 540,
+          height: 280,
+          minorTicks: 5
+        }, item.options);
+
+        const chart = new google.visualization.Gauge(document.getElementById(item.id));
+        chart.draw(data, options);
+      });
+    }
+
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      document.querySelector('h1').textContent = '8 Lacewing Drive Mount Sheridan – ' + file.name;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const text = e.target.result;
+        const lines = text.trim().split('\n');
+        const values = lines.map(line => line.split(',')[1]);
+        drawGauges(values);
+      };
+      reader.readAsText(file);
+    }
+
+    google.charts.setOnLoadCallback(() => {
+      document.getElementById('csvInput').addEventListener('change', handleFileUpload);
+    });
+  </script>
+</head>
+
+<body>
+  <h1>8 Lacewing Drive Mount Sheridan</h1>
+
+  <div class="gauge-grid">
+    <div class="gauge-block"><div class="gauge-title">Total Chlorine</div><div id="chart1_div"></div></div>
+    <div class="gauge-block"><div class="gauge-title">Free Chlorine</div><div id="chart2_div"></div></div>
+    <div class="gauge-block"><div class="gauge-title">Combined Chlorine</div><div id="chart3_div"></div></div>
+    <div class="gauge-block"><div class="gauge-title">pH Level</div><div id="chart4_div"></div></div>
+    <div class="gauge-block"><div class="gauge-title">Total Alkalinity (adj)</div><div id="chart5_div"></div></div>
+    <div class="gauge-block"><div class="gauge-title">Cyanuric Acid</div><div id="chart6_div"></div></div>
+    <div class="gauge-block"><div class="gauge-title">Total Hardness</div><div id="chart7_div"></div></div>
+    <div class="gauge-block"><div class="gauge-title">Calcium Hardness</div><div id="chart8_div"></div></div>
+    <div class="gauge-block"><div class="gauge-title">Phosphates</div><div id="chart9_div"></div></div>
+    <div class="gauge-block"><div class="gauge-title">Total Copper</div><div id="chart10_div"></div></div>
+  </div>
+
+  <input type="file" id="csvInput" accept=".csv">
+</body>
+</html>
