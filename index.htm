@@ -89,7 +89,7 @@
       const file = event.target.files[0];
       if (!file) return;
 
-      document.querySelector('h1').textContent = '8 Lacewing Drive Mount Sheridan – ' + file.name;
+      document.querySelector('h1').textContent = 'Pool Water Test Results – ' + file.name;
 
       const reader = new FileReader();
       reader.onload = function(e) {
@@ -108,7 +108,7 @@
 </head>
 
 <body>
-  <h1>8 Lacewing Drive Mount Sheridan</h1>
+  <h1>Pool Water Test Results</h1>
 
   <div class="gauge-grid">
     <div class="gauge-block"><div class="gauge-title">Total Chlorine</div><div id="chart1_div"></div></div>
