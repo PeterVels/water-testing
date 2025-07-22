@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Water Testing Guide for Android Users</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      font-size: 28px;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 22px;
+      color: #34495e;
+      margin-top: 24px;
+    }
+    p, li {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    code {
+      background-color: #eaeaea;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 Water Testing Dashboard – Android Guide</h1>
+
+  <p>This page explains how Android users can create and use a CSV file for uploading pool readings to the dashboard at <a href="https://petervels.github.io/water-testing/">petervels.github.io/water-testing</a>.</p>
+
+  <h2>📄 Step 1: Create a CSV File</h2>
+  <p>You can create a CSV file using any plain text app:</p>
+  <ul>
+    <li><strong>Text Editor:</strong> Use apps like <em>QuickEdit</em>, <em>Jota Text Editor</em>, or even <em>Google Docs</em></li>
+    <li><strong>Google Sheets:</strong> Create a sheet, enter your values, and export as `.csv`</li>
+  </ul>
+
+  <h2>✅ CSV Format</h2>
+  <p>Your CSV should follow this format (each line = test name and value):</p>
+  <pre>
+Total Chlorine,1.8
+Free Chlorine,1.7
+Combined Chlorine,0.1
+pH Level,7.4
+Total Alkalinity (adj),110
+Cyanuric Acid,40
+Total Hardness,300
+Calcium Hardness,280
+Phosphates,0.12
+Total Copper,0.05
+  </pre>
+
+  <p>If you'd like a blank template to start from, download it here:</p>
+  <p><a href="https://raw.githubusercontent.com/petervels/water-testing/main/pool-readings.csv" target="_blank">Download CSV Template</a></p>
+
+  <h2>📤 Step 2: Upload to the Dashboard</h2>
+  <ul>
+    <li>Open <a href="https://petervels.github.io/water-testing/">the dashboard</a> in Chrome or any mobile browser</li>
+    <li>Scroll to the bottom and tap the <code>Choose CSV</code> button</li>
+    <li>Select the CSV file from your phone’s storage</li>
+    <li>Gauges will update instantly with your readings</li>
+  </ul>
+
+  <h2>📁 Tips</h2>
+  <ul>
+    <li>Save files to easy-access folders like <code>Downloads</code> or <code>Documents</code></li>
+    <li>Use filenames like <code>pool-july.csv</code> — they’ll appear in the page title</li>
+    <li>Keep a few versions for different seasons or treatments</li>
+  </ul>
+
+  <p>Questions or improvements? You can fork or contribute directly on <a href="https://github.com/petervels/water-testing">GitHub</a>.</p>
+
+  <p style="margin-top: 40px; font-size: 14px; color: #999;">Made with poolside precision for FNQ. 😎</p>
+</body>
+</html>
